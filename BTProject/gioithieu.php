@@ -57,47 +57,48 @@
                     </div>
                 </div>
             </nav>
-            <!--menu-->
             <div class="container-fluid menu">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                            <div class="col-lg-4 col-md-4 hidden-xs hidden-sm"></div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                <h1 style="color: greenyellow;" class="bold">Thiết Bị Số</h1>
-                                <span class="white">Mang cả thế giới trên đôi bàn tay</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 hidden-xs hidden-sm">
-                                <br/>
-                                <br/>
-                                <br/>
-                            </div>
-                        </div>
-                        <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                                <nav class="navbar navbar-inverse navmenu">
-                                        <div class="navbar-header">
-                                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                            </button>
-                                        </div>
-                                        <div class="collapse navbar-collapse" id="myNavbar">
-                                            <ul class="nav navbar-nav">
-                                                <li><a href="index.php"  class="white mn_hover">TRANG CHỦ</a></li>
-                                                <li class="activex"><a href="gioithieu.php" class="white mn_hover">GIỚI THIỆU</a></li>
-                                                <li><a href="sanpham.php" class="white mn_hover">SẢN PHẨM</a></li>
-                                                <li><a href="bando.php" class="white mn_hover">BẢN ĐỒ</a></li>
-                                                <li><a href="lienhe.php" class="white mn_hover">LIÊN HỆ</a></li>
-                                            </ul>
-                                        </div>
-                                </nav>
+                                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                    <h1 style="color: greenyellow;" class="bold">Thiết Bị Số</h1>
+                                    <span class="white">Mang cả thế giới trên đôi bàn tay</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 hidden-xs hidden-sm">
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                                    <nav class="navbar navbar-inverse navmenu">
+                                            <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                </button>
+                                            </div>
+                                            <div class="collapse navbar-collapse" id="myNavbar">
+                                                <ul class="nav navbar-nav">
+                                                    <li class="activex"><a href="index.php"  class="white mn_hover">TRANG CHỦ</a></li>
+                                                    <li><a href="gioithieu.php" class="white mn_hover">GIỚI THIỆU</a></li>
+                                                    <li><a href="sanpham.php" class="white mn_hover">SẢN PHẨM</a></li>
+                                                    <li><a href="bando.php" class="white mn_hover">BẢN ĐỒ</a></li>
+                                                    <li><a href="lienhe.php" class="white mn_hover">LIÊN HỆ</a></li>
+                                                </ul>
+                                            </div>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
