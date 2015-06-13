@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Boostrap Project</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        
+        <script type="text/javascript">
+            $(document).ready(function() {
+		
+            $(window).scroll(function(){
+			if($(window).scrollTop() !== 0 ){
+				$('#btt').fadeIn();	
+			}else $('#btt').fadeOut();
+		});
+		$('#btt').click(function(){
+			$('html, body').animate({scrollTop:0}, 500);
+		});
+            });
+            //set height
+            $(document).ready(function(){
+                $('.pro_img').height('150');
+            });
+               
+        </script>
+        <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <!--Toggle menu-->
+        <script>
+        $(document).ready(function(){
+            $("#click").click(function(){
+                $("#toggle_nav").slideToggle();
+                });
+            });
+</script>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse header hidden-xs">
+            <div class=" col-lg-6 col-md-6 hidden-sm hidden-xs">
+                <div class="navbar-header">
+                    <a class="navbar-brand"></a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="nav navbar-nav">
+                    <li><a href="customer_acc.html"  class="pointer">Tài khoản của tôi</a></li>
+                    <li><a href="giohang.html" class="pointer txt_head"><span class="glyphicon glyphicon-shopping-cart white"></span>
+                            &nbsp;Giỏ hàng&nbsp;<span class="badge txt_head">0</span></a></li>
+                    <li><a class="pointer txt_head" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in white"></span>&nbsp;Đăng nhập</a></li>
+                    <li><a class="pointer txt_head" data-toggle="modal" data-target="#registerModal">Đăng kí</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="col-xs-12 visible-xs " style="background: #000; height: 30px; font-size: 18px; line-height:30px; ">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-10 clr_padding">
+                <div class="col-xs-3 clr_padding"><a href="customer_acc.html"  class="pointer"><span class="glyphicon glyphicon-user white"></span></a></div>
+                <div class="col-xs-3 clr_padding"><a href="giohang.html" class="pointer txt_head"><span class="glyphicon glyphicon-shopping-cart white"></span><span class="badge txt_head">0</span></a></div>
+                <div class="col-xs-3 clr_padding"><a class="pointer txt_head" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in white"></span></a></div>
+                <div class="col-xs-3 clr_padding"><a class="pointer txt_head" data-toggle="modal" data-target="#registerModal"><span class="glyphicon glyphicon-pencil white"></span></a></div>
+            </div>
+        </div>
+        
+        <!--Toggle nav-->
+        <div class="container visible-xs" style="position: fixed; z-index: 9999; width: 100%; ">
+            <div class="row" id="toggle_nav" style="display: none;">
+                <div>
+                    <div class="panel list-group clr_padding">
+                        <span class="list-group-item bold" style="background: #000; color:greenyellow;">Danh mục sản phẩm</span>
+                        <span class="list-group-item pointer bold" data-toggle="collapse" data-target="#dt" data-parent="#menu">Điện thoại di động</span>
+                        <div id="dt" class="sublinks collapse">
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Apple</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Samsung</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Sony</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>LG</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>HTC</a>
+                        </div>
+                        <span class="list-group-item pointer bold" data-toggle="collapse" data-target="#tb" data-parent="#menu">Máy tính bảng</span>
+                        <div id="tb" class="sublinks collapse">
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Samsung</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Apple</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Microsoft</a>
+                        </div>
+
+                        <span class="list-group-item pointer bold" data-toggle="collapse" data-target="#lt" data-parent="#menu">Laptop</span>
+                        <div id="lt" class="sublinks collapse">
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Samsung</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Sony</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>HP</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>DELL</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Apple</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Lenovo</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Acer</a>
+                        </div>
+
+                        <span class="list-group-item pointer bold" data-toggle="collapse" data-target="#pk" data-parent="#menu">Phụ kiện</span>
+                        <div id="pk" class="sublinks collapse">
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Phụ kiện máy tính</a>
+                            <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Phụ kiện điện thoại</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 30px; height: 20px; background: #fff; opacity: 0.7; border-radius: 2px;" id="click">
+                <center><span class="glyphicon glyphicon-tasks " style="font-size: 18px;"></span></center>
+            </div>
+        </div>
+            
+            <!--menu-->
+            <div class="container-fluid menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                    <a href="index.html"><h1 style="color: greenyellow;" class="bold logo">Thiết Bị Số</h1></a>
+                                    <span class="white hidden-xs">Mang cả thế giới trên đôi bàn tay</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 hidden-xs hidden-sm">
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                                    <nav class="navbar navbar-inverse navmenu">
+                                            <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                </button>
+                                            </div>
+                                            <div class="collapse navbar-collapse" id="myNavbar">
+                                                <ul class="nav navbar-nav">
+                                                    <li><a href="index.html"  class="white mn_hover">TRANG CHỦ</a></li>
+                                                    <li class="activex"><a href="gioithieu.html" class="white mn_hover">GIỚI THIỆU</a></li>
+                                                    <li><a href="sanpham.html" class="white mn_hover">SẢN PHẨM</a></li>
+                                                    <li><a href="bando.html" class="white mn_hover">BẢN ĐỒ</a></li>
+                                                    <li><a href="lienhe.html" class="white mn_hover">LIÊN HỆ</a></li>
+                                                </ul>
+                                            </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end menu-->
+            
+            <!--content-->
+            <div class="container content">
+                
+            <hr/>
+                <div class="row" style="margin-top: 20px;">
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <!--Search-->
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                </span>
+                            </div>
+                        </div>
+                        <!--Category-->
+                        <div class="row">
+                            <div id="menu">
+                                <div class="panel list-group">
+                                    <span class="list-group-item bold" style="background: #000; color:greenyellow;">Danh mục sản phẩm</span>
+                                    <span class="list-group-item pointer bold" data-toggle="collapse" data-target="#sm" data-parent="#menu">Điện thoại di động</span>
+                                    <div id="sm" class="sublinks collapse">
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Apple</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Samsung</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Sony</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>LG</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>HTC</a>
+                                    </div>
+                                    <span class="list-group-item pointer bold" data-toggle="collapse" data-target="#s1" data-parent="#menu">Máy tính bảng</span>
+                                    <div id="s1" class="sublinks collapse">
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Samsung</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Apple</a>
+                                    </div>
+                                    
+                                    <span class="list-group-item pointer bold" data-toggle="collapse" data-target="#s3" data-parent="#menu">Laptop</span>
+                                    <div id="s3" class="sublinks collapse">
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Samsung</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Sony</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>HP</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>DELL</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Apple</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Lenovo</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Acer</a>
+                                    </div>
+                                    
+                                    <span class="list-group-item pointer bold" data-toggle="collapse" data-target="#s5" data-parent="#menu">Phụ kiện</span>
+                                    <div id="s5" class="sublinks collapse">
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Phụ kiện máy tính</a>
+                                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span>Phụ kiện điện thoại</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <center><div class="fb-page" data-href="https://www.facebook.com/pages/Thi%E1%BA%BFt-b%E1%BB%8B-s%E1%BB%91/852071751497173" data-width="250" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
+                                        <div class="fb-xfbml-parse-ignore">
+                                            <blockquote cite="https://www.facebook.com/pages/Thi%E1%BA%BFt-b%E1%BB%8B-s%E1%BB%91/852071751497173">
+                                                <a href="https://www.facebook.com/pages/Thi%E1%BA%BFt-b%E1%BB%8B-s%E1%BB%91/852071751497173">Thiết bị số</a>
+                                            </blockquote>
+                                        </div>
+                                    </div></center>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                        <h3 style="color: greenyellow;">THÔNG TIN GIỚI THIỆU</h3><br>
+                        <h4>I.QUÁ TRÌNH HÌNH THÀNH VÀ PHÁT THIỂN</h4><br/>
+                        <span>Trong những năm qua, xã hội phát triển, kinh tế tăng trưởng đồng thời là chất lượng cuộc sống của người dân ngày càng càng được nâng cao nhiều trung tâm thương mại, nhà cao tầng, biệt thự được mọc ra  kèm theo đấy là nhu cầu mua sắm các thiết bị phục vụ nhu cầu cuộc sống hàng ngày như TV, Tủ lạnh, Điện gia dụng.....
+                            Thế giới điện tử <b>Thiết Bị Số</b> khai trương Siêu thị Vạn Lộc, Xuân Canh, Đông Anh, Hà Nội chính thức tham gia vào lĩnh vực kinh doanh bán lẻ điện tử,  tạo ra một phong cách mua sắm hoàn toàn mới với người dân thủ đô, thông qua cung cấp các sản phẩm và dịch vụ tới người tiêu dùng.<br/>
+                            • TẦM NHÌN :<br/>
+                            Công ty số 1 tại Việt Nam trong lĩnh vực phân phối, bán lẻ các sản phẩm điện tử.<br/>
+                            • SỨ MỆNH:<br/>
+                            Với kim chỉ nam là “Không ngừng phát triển vì khách hàng” và làm hài lòng khách hàng bằng cách tạo ra những  giá trị gia tăng như cung cấp các sản phẩm, dịch vụ tốt nhất .<br/>
+                            • MỤC TIÊU CHIẾN LƯỢC :<br/>
+                            1.      Tối đa hoá giá trị đầu tư của các cổ đông; giữ vững tốc độ tăng trưởng lợi nhuận và tình hình tài chính lành mạnh;<br/>
+                            2.      Không ngừng nâng cao động lực làm việc và năng lực cán bộ; <b>Thiết Bị Số</b> phải luôn dẫn đầu ngành điện tử trong việc sáng tạo, phát triển chính sách đãi ngộ và cơ hội thăng tiến nghề nghiệp cho cán bộ của mình;<br/>
+                            3.      Duy trì sự hài lòng, trung thành và gắn bó của khách hàng với <b>Thiết Bị Số</b>; xây dựng <b>Thiết Bị Số</b> thành một trong những công ty hàng đầu Việt Nam có chất lượng dịch vụ tốt nhất do khách hàng lựa chọn.<br/>
+                            4.      Phát triển <b>Thiết Bị Số</b> thành một trong những điện tử hàng đầu Việt Nam về: quản lý tốt nhất, môi trường làm việc tốt nhất, văn hoá doanh nghiệp chú trọng khách hàng, thúc đẩy hợp tác và sáng tạo, linh hoạt nhất khi môi trường kinh doanh thay đổi.
+                        </span>
+                        <h4>II. THẾ MẠNH VÀ ĐỊNH HƯỚNG CỦA CÔNG TY</h4>
+                        <span>
+                            Với kim chỉ nam là “Không ngừng phát triển vì khách hàng”, <b>Thiết Bị Số</b> đã quy tụ được Ban Lãnh đạo có bề dày kinh nghiệm trong các lĩnh vực điện tử không chỉ mạnh về kinh doanh mà còn mạnh về công nghệ có nhiều tiềm năng phát triển, kết hợp với đội ngũ nhân viên trẻ, năng động và chuyên nghiệp tạo lên thế mạnh nòng cốt của công ty để thực hiện tốt các mục tiêu đề ra.<br/>
+                            Hơn nữa, trên cơ sở nguồn lực của công ty và nhu cầu của xã hội, <b>Thiết Bị Số</b>  lựa chọn phát triển kinh doanh các sản phẩm Điện tử phục vụ nhu cầu thiết yếu của người dân với các sản phẩm đa dạng phong phú mang lại giá trị gia tăng cho người tiêu dùng thông qua các dịch vụ sau bán hàng.
+                            Qua quá trình phát triển, bên cạnh việc thiết lập được một hệ thống đối tác nước trong nước và ngoài đến từ các doanh nghiệp lớn của Korea, Singapore, Trung Quốc, Nhật Bản, có thế mạnh trong các lĩnh vực Điện máy, sản phẩm công nghệ như: SAMSUNG, SONY, Panasonic, Toshiba, Sharp,... Trong thời gian tới Công ty sẽ đầu tư vào các ngành nghề mới như bất động sản, khai thác khoáng, đầu tư tài chính..
+                        </span>
+                        <h4>III. ĐỘI NGŨ NHÂN SỰ</h4>
+                        <span>Hội đồng Quản trị do Đại hội đồng cổ đông tín nhiệm bầu ra. Hội đồng quản trị là cơ quan quản trị toàn bộ mọi hoạt động của công ty, các chiến lược, kế hoạch sản xuất và kinh doanh trong nhiệm kỳ của mình. 
+                        Ban Giám đốc sẽ chịu trách nhiệm về các mặt hoạt động của công ty trước Hội đồng Quản trị và pháp luật hiện hành, quyết định các chủ trương, chính sách, mục tiêu chiến lược của công ty, đồng thời giám sát và kiểm tra tất cả các hoạt động về sản xuất kinh doanh, đầu tư của công ty. </span>
+
+                        <h4>IV. CAM KẾT</h4>
+                        <span><b>Thiết Bị Số</b> nỗ lực hướng tới mục tiêu phát triển bền vững và trở thành thương hiệu hàng đầu về cung cấp các sản phẩm Điện tử tại Việt Nam mang tầm cỡ quốc tế. Dựa vào nội lực của chính mình và mở rộng hợp tác với các đối tác trong và ngoài nước chúng tôi cam kết.<br/>
+
+                            Cam kết với đối tác :<br/>
+                            - Trở thành đối tác chiến lược trong và ngoài nước trên cơ sở " Hợp tác, phát triển bền vững " hợp tác toàn diện lâu dài nhằm kịp thời đưa những sản phẩm mới nhất và dịch vụ theo các yêu cầu đặc thù của khách hàng.<br/>
+                            Cam kết với khách hàng :<br/>
+                            - Luôn luôn làm khách hàng hài lòng về các sản phẩm và dịch vụ do <b>Thiết Bị Số</b> cung cấp. Sự thành công hài lòng của khách hàng là thước đo uy tín hiệu quả của doanh nghiệp.<br/>
+                            - Giá cả hàng hóa luôn hợp lý và được cập nhật chính xác, kịp thời nhất để phục vụ khách hàng tốt nhất. <br/>
+                            - Luôn lắng nghe, phân tích và học hỏi từ thị trường trong và ngoài nước. Không bao giờ tự mãn với thành công đã có. <br/>
+                            - Luôn nhìn lại mình để phát triển (đạo đức và kiến thức chuyên môn). Mỗi nhân viên là một thương hiệu cá nhân. Mỗi nhân viên là một đại sứ thiện chí của <b>Thiết Bị Số</b> đối với thế giới bên ngoài. </span>
+
+                        <h4>V. NHỮNG MỤC TIÊU TƯƠNG LAI</h4>
+                        <span>Không ngừng vươn xa, <b>Thiết Bị Số</b> sẽ mở rộng Hệ thống thế giới điện tử tới các Tỉnh thành trong cả nước với tiêu chí phát triển, hiệu quả, bền vững. Sự gia tăng mạnh mẽ cả về nguồn vốn, mô hình và mạng lưới hoạt động cũng như chất lượng nguồn nhân lực không chỉ thể hiện những khởi sắc mà còn là dấu ấn quan trọng trong hoạt động kinh doanh của <b>Thiết Bị Số</b></span>
+                    </div>
+                    
+                
+                </div>
+            <hr/>
+        </div>
+            
+        <!--footer-->
+        <div class="container" style="background: #e3e3e3;">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="margin-top: 40px !important;">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <span class="bold pointer">Điện thoại di động</span><br/>
+                            <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Apple</a><br/>
+                            <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Samsung</a><br/>
+                            <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Sony</a><br/>
+                            <a href=""><span class="glyphicon glyphicon-triangle-right"></span>LG</a><br/>
+                            <a href=""><span class="glyphicon glyphicon-triangle-right"></span>HTC</a>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <span class=" pointer bold">Laptop</span><br/>
+                            <div>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Samsung</a><br/>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Sony</a><br/>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>HP</a><br/>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>DELL</a><br/>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Apple</a><br/>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Lenovo</a><br/>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Acer</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <span class=" pointer bold">Máy tính bảng</span><br/>
+                            <div>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Samsung</a><br/>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Apple</a><br/>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <span class=" pointer bold">Phụ kiện</span><br/>
+                            <div>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Phụ kiện máy tính</a><br/>
+                                <a href=""><span class="glyphicon glyphicon-triangle-right"></span>Phụ kiện điện thoại</a><br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin-top: 40px !important;">
+                        <span style="font-size: 20px;">Công ty Thiết Bị Số</span><br/>
+                        <span class="glyphicon glyphicon-map-marker"> Phường - Quận - Thành Phố</span><br/>
+                        <span class="glyphicon glyphicon-envelope"><a href="mailto:thietbiso@gmail.com"> thietbiso@gmail.com</a></span><br/>
+                        <span class="glyphicon glyphicon-phone"> 0986581710</span><br/>
+                    </div>
+                </div>
+            </div>
+        <!--Btn back to top--><div id="btt" class="toTop" style="display: none;"></div>
+        
+        <!--modal sản phẩm-->
+        <div class="modal fade" id="proModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Tên sản phẩm:</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <img src="sanpham/small/HP450.jpg" class="img-responsive"/>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--Modal đăng nhập-->
+        <div class="modal fade" id="loginModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <center><h4 class="modal-title">Đăng nhập</h4></center>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="control-label col-sm-6" for="email">Email:</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-6" for="pwd">Password:</label>
+                                <div class="col-sm-10">          
+                                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                </div>
+                            </div>
+                            <div class="form-group">        
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox"> Remember me</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">        
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-success" name="login">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--Modal đăng kí-->
+        <div class="modal fade" id="registerModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <center><h4 class="modal-title">Đăng kí</h4></center>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="email">Email:</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="pwd">Password:</label>
+                                <div class="col-sm-9">          
+                                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="re_pwd">Re-enter Password:</label>
+                                <div class="col-sm-9">          
+                                    <input type="password" class="form-control" id="re_pwd" placeholder="Re-Enter password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="fname">First name:</label>
+                                <div class="col-sm-9">          
+                                    <input type="text" class="form-control" id="fname" placeholder="First name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="lname">Last name:</label>
+                                <div class="col-sm-9">          
+                                    <input type="text" class="form-control" id="lname" placeholder="Last name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="phone">Phone:</label>
+                                <div class="col-sm-9">          
+                                    <input type="text" class="form-control" id="phone" placeholder="Phone number">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="addr">Address:</label>
+                                <div class="col-sm-9">          
+                                    <input type="text" class="form-control" id="addr" placeholder="Address">
+                                </div>
+                            </div>
+                            <div class="form-group">        
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-success" name="register">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

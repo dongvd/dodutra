@@ -1,18 +1,26 @@
 body{
     background: #F6F5F5 !important;
 }
+a{
+    text-decoration: none !important;
+}
 .white,#white{
     color: white !important;
 }
 .green{
     color: greenyellow;
-    
 }
 .bold{
     font-weight: bold;
 }
 .pointer{
     cursor: pointer;
+}
+.ip_sort{
+    width: 30px;
+}
+.ip_medium{
+    width: 100px;
 }
 .cell{
     cursor: cell;
@@ -21,12 +29,16 @@ body{
     border: 1px solid #F6F5F5 !important;
     border-radius: 5px;
 }
-
+.new{
+    height: 222px;
+    overflow: scroll;
+}
 .activex{
     background: #77BC1A !important;
 }
 .clr_padding{
     padding:0px !important;
+    margin: 0px !important;
 }
 .header{
     border-radius: 0px !important;
@@ -104,8 +116,8 @@ body{
     padding: 0px !important;
 }
 
-/*@media(max-width:480px){
-    .txt_head{
-        font-size: 10px;
+@media(max-width:480px){
+    .logo{
+        font-size: 25px;
     }
-}*/
+}
