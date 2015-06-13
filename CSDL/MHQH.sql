@@ -10,28 +10,10 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2015-06-12 21:43:02
+Date: 2015-06-13 16:05:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for book
--- ----------------------------
-DROP TABLE IF EXISTS `book`;
-CREATE TABLE `book` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `User_id` int(11) DEFAULT NULL,
-  `Quantify` int(11) DEFAULT NULL,
-  `Status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Trạng thái thanh toán',
-  `DateBook` datetime DEFAULT NULL,
-  `Product_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Records of book
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for categories
@@ -52,10 +34,10 @@ INSERT INTO `categories` VALUES ('3', 'Laptop');
 INSERT INTO `categories` VALUES ('4', 'Phụ kiện');
 
 -- ----------------------------
--- Table structure for connected
+-- Table structure for contact
 -- ----------------------------
-DROP TABLE IF EXISTS `connected`;
-CREATE TABLE `connected` (
+DROP TABLE IF EXISTS `contact`;
+CREATE TABLE `contact` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `NameUserPost` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -67,7 +49,7 @@ CREATE TABLE `connected` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Records of connected
+-- Records of contact
 -- ----------------------------
 
 -- ----------------------------
@@ -80,16 +62,50 @@ CREATE TABLE `invoice` (
   `Address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Phone` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Product_id` int(11) DEFAULT NULL,
+  `Order_id` int(11) DEFAULT NULL,
   `Quantify` int(11) DEFAULT NULL,
   `Total` int(11) DEFAULT NULL COMMENT 'Tổng tiền',
   `DateBuy` datetime DEFAULT NULL,
   `Status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Tình trạng thanh toán',
+  `Created` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of invoice
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for order
+-- ----------------------------
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `User_id` int(11) NOT NULL,
+  `DateOrder` datetime NOT NULL,
+  `Status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of order
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for order_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `order_detail`;
+CREATE TABLE `order_detail` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `Quantity` int(5) NOT NULL,
+  `Total` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of order_detail
 -- ----------------------------
 
 -- ----------------------------
@@ -104,7 +120,7 @@ CREATE TABLE `products` (
   `Description` text COLLATE utf8_unicode_ci NOT NULL,
   `Image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Supplier` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Supplier_id` int(11) DEFAULT NULL,
   `Price` int(11) DEFAULT NULL,
   `Ram` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `OS` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -116,7 +132,7 @@ CREATE TABLE `products` (
   `Info_Other` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Guaranty` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products
@@ -168,6 +184,7 @@ CREATE TABLE `users` (
   `LastName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Authorities` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
