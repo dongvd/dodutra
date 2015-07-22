@@ -124,6 +124,15 @@ class GiohangController extends AppController {
                         }
 //                        echo $id_user."  ".$dateOrder."  ".$status."  ".$total; exit;
                         $this->Order->dathang($id_user,$dateOrder,$status,$total);
+                        //echo $this->Form->getLastInsertId();
+                        $id_order=  $this->Order->getInsertId();
+//                        foreach ($this->session->read("cart") as $valuecart) {
+//                            $idpro=$value["id"];
+//                            $quanti=$value["quantity"];
+//                            $moneey=$value["quantity"]*$value["price"];
+//                            $this->Order->insertOrderDetail($id_order,$idpro,$quanti);
+//                        }
+                    var_dump($this->Session->read("login")); exit;
                     }
                 }
             }

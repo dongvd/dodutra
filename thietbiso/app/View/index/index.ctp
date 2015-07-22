@@ -180,26 +180,28 @@
             <div class="row">
                 <center><span class="bold" style="font-size: 18px !important; color: green;">LAPTOP</span></center>
             </div>
-            <div class="row" id="content">
+            <div class="row content-lap" id="content">
                 <?php
                     $i=0;
                     foreach ($dataLaptop as $value) {
                         $img="sanpham/small/".$value["Product"]["Image"];
                         $id=$value["Product"]["id"];
+                        $idc=$value["Product"]["categories_id"];
+                        $idsupp=$value["Product"]["suppliers_id"];
                 ?>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 border " >
                                 <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top:10px !important;">
                                     <center>
                                         
                                         <!--<img id="" data-zoom-image="img/sanpham/large/HP450.jpg" src="img/sanpham/large/HP450.jpg" class="img-responsive pro_img cell" data-toggle="modal" data-target="#proModal" />-->
-         <?php echo $this->html->image($img,array("class"=>"img-responsive pro_img cell img","id" => $id,"data-toggle"=>"modal","data-target"=>"#proModal"));?>
+         <?php echo $this->html->image($img,array("class"=>"img-responsive pro_img cell img","id" => $id,"data-toggle"=>"modal","data-target"=>"#proModal","onclick"=>"click_modal($id,$idc)"));?>
                                         <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
                                     </center>
                                 </div>
                                 <span>Tên: <a><?php echo $value["Product"]["ProductName"];?></a></span><br/>
                                 <span>Giá:<span style="color: red;"><?php echo $value["Product"]["Price"];?></span></span><br/>
                                 <center>
-                               <a  class="btn btn-success btn-sm" href="?cart=<?php echo $value["Product"]["id"];?>">Thêm vào giỏ hàng<a>
+                               <a  class="btn btn-success btn-sm" href="?cart=<?php echo $value["Product"]["id"];?>">Thêm vào giỏ hàng</a>
                                 </center>
                             </div>
                 <?php
@@ -209,7 +211,7 @@
              </div>   
                 <div class="row">
                     <center>
-                        <button type="button" class="btn btn-default btn-sm" id="loadmore" data-dismiss="modal" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
+                        <button type="button" class="btn btn-default btn-sm" id="loadmore" onclick="clickmore(<?php echo $idc ?>)" data-dismiss="modal" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
                     </center>
                 </div>
             
@@ -224,16 +226,19 @@
                     <center><span class="bold" style="font-size: 20px; color: green;">Smart Phone</span></center>
                 </div>
             </div>
-            <div class="row" id="content">
+            <div class="row content-phone" id="content">
             <?php
                 foreach ($dataPhone as $valuePhone) {
                     $imgPhone="sanpham/small/".$valuePhone["Product"]["Image"];
+                    $idp=$valuePhone["Product"]["id"];
+                    $idc=$valuePhone["Product"]["categories_id"];
+                    $idsuppP=$valuePhone["Product"]["suppliers_id"];
             ?>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 border" >
                         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" >
                             <center>
                                 <!--<img id="" src="img/sanpham/small/Bphone1.png" class="" data-toggle="modal" data-target="#proModal" />-->
-        <?php echo $this->html->image($imgPhone,array("class"=>"img-responsive cell pro_img","data-toggle"=>"modal","data-target"=>"#proModal"));?>
+        <?php echo $this->html->image($imgPhone,array("class"=>"img-responsive cell pro_img","data-toggle"=>"modal","data-target"=>"#proModal","onclick"=>"click_modal($idp,$idc)"));?>
                                 <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
                             </center>
 
@@ -248,7 +253,7 @@
             </div>
             <div class="row">
                 <center>
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="clickmore(<?php echo $idc ?>)" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
                 </center>
             </div>
             <center><img class="img-responsive" src="img/qc.jpg"/></center>
@@ -269,16 +274,19 @@
                     <center><span class="bold" style="font-size: 20px; color: green;">Tablet</span></center>
                 </div>
             </div>
-            <div class="row" id="content">
+            <div class="row content-tablet" id="content ">
             <?php
                 foreach ($dataTablet as $valueTablet) {
                     $imgTablet="sanpham/small/".$valueTablet["Product"]["Image"];
+                    $idt=$valueTablet["Product"]["id"];
+                    $idc=$valueTablet["Product"]["categories_id"];
+//                    $idsuppT=$valueTablet["Product"]["suppliers_id"];
             ?>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 border" >
                             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" >
                                 <center>
                                     <!--<img id="" src="img/sanpham/small/ipad.jpg" class="img-responsive cell pro_img" data-toggle="modal" data-target="#proModal" />-->
-        <?php echo $this->html->image($imgTablet,array("class"=>"img-responsive cell pro_img","data-toggle"=>"modal","data-target"=>"#proModal"));?>
+        <?php echo $this->html->image($imgTablet,array("class"=>"img-responsive cell pro_img","data-toggle"=>"modal","data-target"=>"#proModal","onclick"=>"click_modal($idt,$idc)"));?>
                                     <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
                                 </center>
 
@@ -295,7 +303,7 @@
 
             <div class="row">
                 <center>
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="clickmore(<?php echo $idc ?>)" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
                 </center>
             </div>
 
@@ -310,18 +318,20 @@
                     <center><span class="bold" style="font-size: 20px; color: green;">Phụ kiện</span></center>
                 </div>
             </div>
-            <div class="row" id="content">
+            <div class="row content-fitting" id="content ">
              <?php
              $i=0;
                 foreach ($dataFitting as $valueFitting) {
                     $imgFitting="sanpham/small/".$valueFitting["Product"]["Image"];
                     $id=$valueFitting["Product"]["id"];
+                    $idc=$valueFitting["Product"]["categories_id"];
+                    $idsuppF=$valueFitting["Product"]["suppliers_id"];
             ?>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 border" >
                             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" >
                                 <center>
                                     <!--<img id="" src="img/sanpham/small/Jelly-Ear.jpg" class="img-responsive cell pro_img" data-toggle="modal" data-target="#pkModal" />-->
-                                    <?php echo $this->html->image($imgFitting,array("class"=>"img-responsive cell pro_img img$i","id"=>"$id","data-toggle"=>"modal","data-target"=>"#proModal"));?>
+                                    <?php echo $this->html->image($imgFitting,array("class"=>"img-responsive cell pro_img img","id"=>"$id","data-toggle"=>"modal","data-target"=>"#pkModal","onclick"=>"click_modal($id,$idc)"));?>
                                     <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
                                 </center>
                             </div>
@@ -329,6 +339,7 @@
                             <span class="green">Giá: <span style="color:red;"><?php echo number_format($valueFitting["Product"]["Price"])."đ";?></span></span><br/>
                             <center><a  class="btn btn-success btn-sm" href="?cart=<?php echo $valueFitting["Product"]["id"];?>">Thêm vào giỏ hàng<a></center>
                         </div>
+                        
             <?php
                 $i++;
                 }
@@ -336,7 +347,7 @@
             </div>
             <div class="row">
                 <center>
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="clickmore(<?php echo $idc ?>)" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
                 </center>
             </div>
 
@@ -346,3 +357,5 @@
         </div>
     </div>
 </div>
+
+

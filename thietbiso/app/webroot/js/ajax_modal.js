@@ -1,31 +1,8 @@
-//
-//function product(proid){
-//    var xmlhttp;
-//    if (window.XMLHttpRequest)
-//      {// code for IE7+, Firefox, Chrome, Opera, Safari
-//      xmlhttp=new XMLHttpRequest();
-//      }
-//    else
-//      {// code for IE6, IE5
-//      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-//      }
-//    xmlhttp.onreadystatechange=function()
-//  {
-//  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-//    {
-//    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
-//    }
-//  }
-//  xmlhttp.open("GET",'<?php echo $this->Html->url(array("controller"=>"index","action"=>"index/?proid=1"))',true);
-//  xmlhttp.send();
-//}
-
-$("document").ready(function(){
-    
-//    $('.content-row').remove(html);
-    $(".img").click(function(){
-        var proid = $(this).attr("id");
-//        $('.content-row').remove(html);
+//$("document").ready(function(){
+    function click_modal(id,idc){
+//    $(".img").click(function(){
+        var proid = id;
+//        alert("kskfjk");
         $.ajax({
                 type : "GET",
                 dataType:"json",
@@ -34,74 +11,110 @@ $("document").ready(function(){
                 success:function(result){
                     var html="";
                     var html2="";
+                    if(idc==4){
+                        $('#pkModal').empty();
+                        var title='<center><span class="bold">Sản phẩm liên quan</span><br/></center>';
+//                    $.each(result,function(key,value){
+                        if (key == 0) {
+                            html += '        <div class="modal-dialog">';
+                    html += '           <!-- Modal content-->';
+                    html += '           <div class="modal-content">';
+                    html += '               <div class="modal-header">';
+                    html += '                  <button type="button" class="close" data-dismiss="modal">&times;</button>';
+                    html += '                  <h4 class="modal-title">Tên sản phẩm:' + result[0].ProductName + '</h4>';
+                    html += '               </div>';
+                    html += '             <div class="modal-body">';
+                    html += '                  <div class="row">';
+                    html += '                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">';
+                    html += '                          <img src="img/sanpham/small/' + result[0].Image + '" class="img-responsive"/>';
+                    html += '                      </div>';
+                    html += '                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">';
+                    html += '                  </div>';
+                    html += '                   </div>';
+                    html += '             </div>';
+                    html += '<div class="modal-footer">';
+
+                    html += '            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>';
+                    html += '         </div>';
+                    html += '         </div>';
+                    html += '         </div>';
+                        }
+//                    });
+                        $('#pkModal').append(html);
+//                        alert(result[0].id);
+                        
+                    }else{
                     $('.content-row').empty();
-                    html+="<h4 class='modal-title'>Tên sản phẩm:"+result[0].ProductName+"</h4>";
-                    html+='<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
-                    html+=            '<img src="img/sanpham/small/'+result[0].Image+'" class="img-responsive"/>';
-                    html+='        </div>';
-                    html+='        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">';
-                     html+='           <table class="table table-bordered">';
-                     html+='               <tr>';
-                      html+='                  <th>Màn hình</th>';
-                      html+='                  <td>'+result[0].Screen+'</td>';
-                      html+='              </tr>';
-                     html+='               <tr>';
-                     html+='                   <th>CPU</th>';
-                     html+='                   <td>'+result[0].CPU+'</td>';
-                      html+='              </tr>';
-                      html+='              <tr>';
-                       html+='                 <th>Ram</th>';
-                       html+='                 <td>'+result[0].Ram+'</td>';
-                       html+='             </tr>';
-                       html+='             <tr>';
-                        html+='                <th>Hệ điều hành</th>';
-                        html+='                <td>'+result[0].OS+'</td>';
-                         html+='           </tr>';
-                         html+='           <tr>';
-                         html+='               <th>Camera</th>';
-                         html+='               <td>'+result[0].Camera+'</td>';
-                         html+='           </tr>';
-                          html+='          <tr>';
-                           html+='             <th>Pin</th>';
-                           html+='             <td>'+result[0].Pin+'</td>';
-                             html+='       </tr>';
-                             html+='       <tr>';
-                             html+='           <th>Khác</th>';
-                             html+='           <td></td>';
-                              html+='      </tr';
-                              html+='      <tr>';
-                              html+='          <th>Giá</th>'
-                              html+='          <td>'+result[0].Price+'</td>';
-                              html+='      </tr>';
-                               html+='     <tr>';
-                               html+='         <th>Bảo hành</th>';
-                               html+='         <td>'+result[0].Guaranty+'</td>';
-                                html+='    </tr>';
-                               html+=' </table>';
-                           html+=' </div>';
+                    $('.content-row-2').empty();
+                    var title='<center><span class="bold">Sản phẩm liên quan</span><br/></center>';
+                    $.each(result,function(key,value){
+                        if(key==0){
+                            html += "<h4 class='modal-title'>Tên sản phẩm:" + value.ProductName + "</h4>";
+                            html += '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
+                            html += '<img src="img/sanpham/small/' + value.Image + '" class="img-responsive"/>';
+                            html += '        </div>';
+                            html += '        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">';
+                            html += '           <table class="table table-bordered">';
+                            html += '               <tr>';
+                            html += '                  <th>Màn hình</th>';
+                            html += '                  <td>' + value.Screen + '</td>';
+                            html += '              </tr>';
+                            html += '               <tr>';
+                            html += '                   <th>CPU</th>';
+                            html += '                   <td>' + value.CPU + '</td>';
+                            html += '              </tr>';
+                            html += '              <tr>';
+                            html += '                 <th>Ram</th>';
+                            html += '                 <td>' + value.Ram + '</td>';
+                            html += '             </tr>';
+                            html += '             <tr>';
+                            html += '                <th>Hệ điều hành</th>';
+                            html += '                <td>' + value.OS + '</td>';
+                            html += '           </tr>';
+                            html += '           <tr>';
+                            html += '               <th>Camera</th>';
+                            html += '               <td>' + value.Camera + '</td>';
+                            html += '           </tr>';
+                            html += '          <tr>';
+                            html += '             <th>Pin</th>';
+                            html += '             <td>' + value.Pin + '</td>';
+                            html += '       </tr>';
+                            html += '       <tr>';
+                            html += '           <th>Khác</th>';
+                            html += '           <td></td>';
+                            html += '      </tr';
+                            html += '      <tr>';
+                            html += '          <th>Giá</th>'
+                            html += '          <td>' + value.Price + '</td>';
+                            html += '      </tr>';
+                            html += '     <tr>';
+                            html += '         <th>Bảo hành</th>';
+                            html += '         <td>' + value.Guaranty + '</td>';
+                            html += '    </tr>';
+                            html += ' </table>';
+                            html += ' </div>';
+                       }else{
+                                
+                                
+                                html2+=       '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
+                                html2+=            '<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top:10px !important;">';
+                                html2+=                '<center>';
+                                html2+=                    '<img id="zoom01" data-zoom-image="img/sanpham/small/'+value.Image+'" src="img/sanpham/small/'+value.Image+'" class="img-responsive pro_img cell" data-toggle="modal" data-target="#proModal" />';
+                                html2+=                    '<span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>';
+                                html2+=                '</center>';
+                                html2+=           ' </div>';
+                                html2+=            '<span>Tên: <a href="sanpham.html"><b>'+value.ProductName+'</b></a></span><br/>';
+                                html2+=            '<span>Giá:<span style="color: red;">'+value.Price+'</span></span><br/>';
+                                html2+=            '<center><input type="button" class="btn btn-success btn-sm" value="Thêm vào giỏ hàng"/></center>';
+                                html2+=        '</div>';}
+                            });
                     $('.content-row').append(html);
+//                    $('.content-row2').append(title);
+                    $('.content-row-2').append(title,html2);
+                    }
+//                    
                  }
             });
-        });
-});
-//$("document").ready(function(){
-//function add2cart(obj){
-//	var pID = $(obj).attr('id');
-////        alert(pID);
-//	$.ajax({
-//			type : 'POST',
-//			url : 'http://trangkk.com/thietbiso/',
-//			dataType : 'json',
-//			data: {action:'add2cart', pID:pID},
-//			success : function(){
-//                        }
-//		});
-//	return false;
-//}
-//
-//$('.pro_img').click(function(event){
-//    event.preventDefault();
-////    alert("skjksajdkjkjkjl");
-//    add2cart(this);
-//});
+//        });
+    }    
 //});

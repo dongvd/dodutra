@@ -5,10 +5,7 @@ App::uses('AppController', 'Controller');
 class IndexController extends AppController {
 	public $uses = array("Product","Category","User");
         public $helpers=array("Session");
-//        var $components = array( 'RequestHandler' );
 	public function index() {
-//            echo "<pre>";
-//            var_dump($this->SESSION);
             $dataLaptop=$this->Product->getData(3);
             $dataPhone=$this->Product->getData(1);
             $dataTablet=$this->Product->getData(2);
@@ -29,13 +26,12 @@ class IndexController extends AppController {
 
             }           
             $this->_login();
-    //        $this->_getLogin();
             $this->_register();
             $this->_logout();
             $this->_addToCart();
             $this->_updateCate();
             $this->_test();
-//            $this->_ajaxModal2();
+            $this->_loadmore();
         }
         
 
@@ -114,23 +110,15 @@ class IndexController extends AppController {
                     $this->Session->write("cart.$id.quantity",$quantity);
                     $this->Session->write("cart.$id.name",$value["Product"]["ProductName"]);
                     $this->Session->write("cart.$id.price",$value["Product"]["Price"]);
-//                    echo "<script>alert('ma sp:".$this->Session->read("cart.$id.id")."    so luong sp".$this->Session->read("cart.$id.quantity")."');</script>";
                     $this->redirect(array("controller"=>"index","action"=>"index"));
-//                    $this->redirect(array("controller"=>"index","action"=>"index"));
                 }else{
                     $this->Session->write("cart.$id.quantity",$this->Session->read("cart.$id.quantity")+1);
-//                    echo "<script>alert('ma sp:".$this->Session->write("cart.$id.id",$id)."  so luong sp".$this->Session->read("cart.$id.quantity")."');</script>";
                     $this->redirect(array("controller"=>"index","action"=>"index"));
                 }
                 }else{
-                echo "<script>alert('Bạn phải đăng nhập');window.location.href=('index')</script>";
+                    echo "<script>alert('Bạn phải đăng nhập');window.location.href=('index')</script>";
+                }
             }
-            }
-            
-//            $this->Session->delete("cart");
-//                echo count($this->Session->read("cart")); exit;
-//            echo "<pre>";
-//            var_dump($this->Session->read("cart"));exit;
         }
         protected  function _updateCate(){
             $total=0;
@@ -141,33 +129,52 @@ class IndexController extends AppController {
                 $this->set("total",$total);
             }
         }
-        protected function _ajaxModal2(){
-//            $id=  $this->request->query("proid");
-//            if(!empty($id)){
-//            echo "<pre>";
-//                $this->Category->getDataAjax2();
-////            }else{
-////                echo "khong co :((((";
-////            }
-        }
+        
         
         public function _test(){
             $id=  $this->request->query("proid");
             if(!empty($id)){
                 $data_ajax=$this->Product->getDataAjax($id);
-//                var_dump($data_ajax); exit;
-//                $this->set("data_ajax",$data_ajax);
                 $result=array();
-                $i=0;
+                $result_pro=array();
             foreach ($data_ajax as $value_jax) {
-//                $result=$value_jax;
                 array_push($result, $value_jax["Product"]);
+                $supp=$value_jax["Product"]["suppliers_id"];
+                $cate=$value_jax["Product"]["categories_id"];
             }
+            
+            $data_pro=  $this->Product->getProduct($id,$cate,$supp);
+//            echo "<pre>";
+//            var_dump($data_pro); exit;
+                $i=count($result);
+            foreach ($data_pro as $value_pro) {
+                array_push($result, $value_pro["Product"]);
+//                $i++;
+            }
+//               
                 die(json_encode($result));
-//            var_dump($result); exit;
+//                 echo json_encode(array("value"=>$result));
+            var_dump(($result)); exit;
                 
             }
             
 //            die;
+        }
+        
+        protected function _loadmore(){
+            $offset=  $this->request->query("page");
+            $cate=  $this->request->query("cate");
+            if(!empty($offset) && !empty($cate)){
+//            
+                $dataLoadMore=$this->Product->getDataLoadMore($offset,$cate);
+//                
+//                $arr_more=array();
+//                foreach ($dataLoadMore as $value_more) {
+//                    array_push($arr_more,$value_more["products"]);
+//                }
+                die(json_encode($dataLoadMore));
+//                echo "<pre>";
+                var_dump($dataLoadMore); exit;
+            }    
         }
 }

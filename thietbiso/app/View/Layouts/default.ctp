@@ -286,59 +286,20 @@ echo $this->Html->link($this->Html->tag('span', '', array('class' => 'glyphicon 
         <!--Btn back to top--><div id="btt" class="toTop" style="display: none;"></div>
 
         <!--modal sản phẩm-->
-        <?php 
-//            foreach ($data_ajax as $value_ajax) {
-//                $img_ajax="sanpham/small/".$value_ajax["Product"]["Image"];
-        ?>
         <div class="modal fade" id="proModal" role="dialog">
             <div class="modal-dialog">
-                 Modal content
                 
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <!--<h4 class="modal-title">Tên sản phẩm:<?php echo $value_ajax["Product"]["ProductName"] ?></h4>-->
                     </div>
                    <div class="modal-body">
                         <div class="row content-row">
                             
                         </div><hr/>
-                        <div class="row">
-                            <center><span class="bold">Sản phẩm liên quan</span><br/></center>
+                        <div class="row content-row-2">
                             
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top:10px !important;">
-                                    <center>
-                                        <img id="zoom01" data-zoom-image="sanpham/large/HP450.jpg" src="sanpham/large/HP450.jpg" class="img-responsive pro_img cell" data-toggle="modal" data-target="#proModal" />
-                                        <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
-                                    </center>
-                                </div>
-                                <span>Tên: <a href="sanpham.html"><b>HP Proobook450</b></a></span><br/>
-                                <span>Giá:<span style="color: red;">10.500.000đ</span></span><br/>
-                                <center><input type="button" class="btn btn-success btn-sm" value="Thêm vào giỏ hàng"/></center>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top:10px !important;">
-                                    <center>
-                                        <img id="zoom01" data-zoom-image="sanpham/large/HP450.jpg" src="sanpham/large/HP450.jpg" class="img-responsive pro_img cell" data-toggle="modal" data-target="#proModal" />
-                                        <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
-                                    </center>
-                                </div>
-                                <span>Tên: <a href="sanpham.html"><b>HP Proobook450</b></a></span><br/>
-                                <span>Giá:<span style="color: red;">10.500.000đ</span></span><br/>
-                                <center><input type="button" class="btn btn-success btn-sm" value="Thêm vào giỏ hàng"/></center>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top:10px !important;">
-                                    <center>
-                                        <img id="zoom01" data-zoom-image="sanpham/large/HP450.jpg" src="sanpham/large/HP450.jpg" class="img-responsive pro_img cell" data-toggle="modal" data-target="#proModal" />
-                                        <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
-                                    </center>
-                                </div>
-                                <span>Tên: <a href="sanpham.html"><b>HP Proobook450</b></a></span><br/>
-                                <span>Giá:<span style="color: red;">10.500.000đ</span></span><br/>
-                                <center><input type="button" class="btn btn-success btn-sm" value="Thêm vào giỏ hàng"/></center>
-                            </div>
+                            
                             
                             
                         </div>
@@ -352,28 +313,6 @@ echo $this->Html->link($this->Html->tag('span', '', array('class' => 'glyphicon 
         <?php //} ?>
         <!--modal phụ kiện-->
         <div class="modal fade" id="pkModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Tên sản phẩm:</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <img src="sanpham/small/Jelly-Ear.jpg" class="img-responsive"/>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
         </div>
         <!--Modal zoom sp-->
         <div class="modal fade" id="zoomModal" role="dialog">
@@ -386,9 +325,9 @@ echo $this->Html->link($this->Html->tag('span', '', array('class' => 'glyphicon 
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<!--                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <center><img src="sanpham/large/HP450.jpg" class="img-responsive"/></center>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     <div class="modal-footer">
