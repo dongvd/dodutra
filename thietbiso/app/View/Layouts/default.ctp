@@ -73,7 +73,7 @@
 </head>
 <body>
      <?php 
-//        var_dump($this->Session->read("cart")); exit;
+//     var_dump($this->Session->read("login")); exit;
     ?>
     <nav class="navbar navbar-inverse header hidden-xs">
             <div class=" col-lg-6 col-md-6 hidden-sm hidden-xs">
