@@ -58,6 +58,9 @@ a{
     cursor: pointer;
     
 }
+.product{
+    height: 270px !important;
+}
 .menu{
     background: url('../img/header_bg.jpg');
 }

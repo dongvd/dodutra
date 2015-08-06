@@ -16,11 +16,24 @@ class User extends AppModel{
         return $info;
     }
     
+    public function testRegister($email){
+        $sql="select count(*) as count from users where Email='$email'";
+        $info=$this->query($sql);
+        return $info;
+    }
     public function register($email,$password,$fname,$lname,$phone,$add){
         $created=Date("Y-m-d H:i:s");
-        $sql="insert into users values('','$email','$password','$fname','$lname','$phone','$add','2','$created')";
-        $this->query($sql);
-        $num=  $this->getNumRows();
+        $number=$this->testRegister($email);
+//        var_dump(); exit;
+        if($number[0][0]["count"]==0){
+            $sql="insert into users values('','$email','$password','$fname','$lname','$phone','$add','2','$created')";
+            $this->query($sql);
+            $num=  $this->getNumRows();
+            
+        }else{
+//            echo "<script>alert('email đã đk đăng kí')</script>"; exit;
+            $num=0;
+        }
         return $num;
     }
     public function getDataUser($id){

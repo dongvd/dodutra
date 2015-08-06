@@ -10,16 +10,16 @@ function clickmore(cate){
         $.ajax({
             type:"get",
             dataType:"json",
-            url:"http://trangkk.com/thietbiso/index/index",
+            url:"http://thietbiso.com/index/index",
             data:{page:page,cate:cate},
             success:function(arr_more){
                 var html="";
 //                $('.content-lap').empty();
                     $.each(arr_more,function(key,obj){
-                       html+='<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 border " >';
+                       html+='<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 border product" >';
                        html+=         '<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top:10px !important;">';
                        html+=             '<center >';
-                       html+=                 '<img onclick="click_modal('+obj.products.id+')" data-zoom-image="/thietbiso/img/sanpham/small/'+obj.products.Image+'" src="/thietbiso/img/sanpham/small/'+obj.products.Image+'" class="img-responsive pro_img cell img" id="'+obj.products.id+'" data-toggle="modal" style="height:150px" data-target="#proModal" />';
+                       html+=                 '<img onclick="click_modal('+obj.products.id+')" data-zoom-image="/img/sanpham/small/'+obj.products.Image+'" src="/img/sanpham/small/'+obj.products.Image+'" class="img-responsive pro_img cell img" id="'+obj.products.id+'" data-toggle="modal" style="height:150px" data-target="#proModal" />';
                        html+=                 '<span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>';
                        html+=             '</center>';
                        html+=         '</div>';

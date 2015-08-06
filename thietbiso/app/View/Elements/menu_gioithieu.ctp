@@ -1,8 +1,8 @@
 <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
-        <li><?php echo $this->html->link('TRANG CHỦ',array('controller'=>'index','action'=>'index'),array('class'=>'white mn_hover')) ?></li>
-        <li class="activex"><?php echo $this->html->link('GIỚI THIỆU',array('controller'=>'gioithieu','action'=>'gioithieu'),array('class'=>'white mn_hover')) ?></li>
-        <li><?php echo $this->html->link('SẢN PHẨM',array('controller'=>'sanpham','action'=>'sanpham'),array('class'=>'white mn_hover')) ?></li>
-        <li><?php echo $this->html->link('LIÊN HỆ',array('controller'=>'lienhe','action'=>'lienhe'),array('class'=>'white mn_hover')) ?></li>
+        <li><a href="/" class="white mn_hover">TRANG CHỦ</a></li>
+        <li class="activex"><a href="/gioi-thieu" class="white mn_hover">GIỚI THIỆU</a></li>
+        <li><a href="/san-pham" class="white mn_hover">SẢN PHẨM</a></li>
+        <li><a href="/lien-he" class="white mn_hover">LIÊN HỆ</a></li>
     </ul>
 </div>

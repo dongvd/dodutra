@@ -10,7 +10,7 @@ class SanphamController extends AppController {
 	public $uses = array("Product","User");
 
 
-	public function sanpham() {
+	public function sanpham($products_categories_id = NULL) {
             $this->set('menu_sanpham', '1');
             
             $this->_addToCart();
@@ -20,6 +20,18 @@ class SanphamController extends AppController {
             $this->_updateCate();
             $this->_GetDataMenuLeft();
             $this->_filter();
+            
+            
+            if(empty($products_categories_id)){
+                $this->paginate = array('limit'=>20);
+                $list_product = $this->paginate('Product');
+                $this->set('list_product',$list_product);
+            }
+            else {
+                $this->paginate = array('limit'=>20,'conditions'=>array('Product.categories_id'=>$products_categories_id));
+                $list_product = $this->paginate('Product');
+                $this->set('list_product',$list_product);
+            }
         }
         public function resultsearch() {
             $this->set('menu_sanpham', '1');
@@ -30,6 +42,31 @@ class SanphamController extends AppController {
             $this->_updateCate();
             $this->_search();
         }
+        
+        public function detail($products_id = NULL){
+            if(!empty($products_id))
+            {
+                $pro_info = $this->Product->findById($products_id);
+                if(empty($pro_info))
+                    $this->redirect(array('controller'=>'index','action'=>'index'));
+            }
+            $this->set('name',$pro_info['Product']['ProductName']);
+            $this->set('image',$pro_info['Product']['Image']);
+            $this->set('screen',$pro_info['Product']['Screen']);
+            $this->set('processor',$pro_info['Product']['CPU']);
+            $this->set('ram',$pro_info['Product']['Ram']);
+            $this->set('os',$pro_info['Product']['OS']);
+            $this->set('camera',$pro_info['Product']['Camera']);
+            $this->set('pin',$pro_info['Product']['Pin']);
+            $this->set('other',$pro_info['Product']['Info_Other']);
+            $this->set('price',$pro_info['Product']['Price']);
+            $this->set('guaranty',$pro_info['Product']['Guaranty']);
+            
+            $this->paginate = array('limit'=>3,'order'=>array('Product.id rand()'),'conditions'=>array('Product.suppliers_id'=>$pro_info['Product']['suppliers_id'],'Product.categories_id'=>$pro_info['Product']['categories_id']));
+            $connect_pro = $this->paginate('Product');
+            $this->set('connect_pro',$connect_pro);
+        }
+
         protected function _addToCart(){
             
             $id=$this->request->query("cart");
@@ -66,25 +103,30 @@ class SanphamController extends AppController {
                 $email=$this->request->data("lgemail");
                 $pass=$this->request->data("lgpwd");
                 if(!empty($email) && !empty($pass)){
-                $num=$this->User->login($email,$pass);
-                $info=  $this->User->getLogin($email,$pass);
-                if(!empty($info)){
-                    foreach ($info as $valIfo) {
-                        $usr=$valIfo["users"]["FirstName"];
-                        $pwd=$valIfo["users"]["LastName"];
-                    }
-                     $name=$usr.$pwd;
-                        $this->set("info",$info);
-                    if($num>0){
-                        echo "<script>alert('Bạn đăng nhập thành công');</script>";
+                    $num=$this->User->login($email,$pass);
+                    
+                    $info=  $this->User->getLogin($email,$pass);
+                    if(!empty($info)){
+                        foreach ($info as $valIfo) {
+                            $usr=$valIfo["users"]["FirstName"];
+                            $pwd=$valIfo["users"]["LastName"];
+                            $id=$valIfo["users"]["id"];
+                        }
+                         $name=$usr.$pwd;
+                            $this->set("info",$info);
+                        if($num>0){
+                            echo "<script>alert('Bạn đăng nhập thành công');</script>";
 
-                    }
-                    $this->Session->write("login.email","$email");
-                    $this->Session->write("login.pass","$pass");
-                    $this->Session->write("login.name","$name");
-                }else{
-                    echo "<script>alert('Đăng nhập không thành công');</script>";
-                }
+                        }
+                        
+                        $this->Session->write("login.email","$email");
+                        $this->Session->write("login.pass","$pass");
+                        $this->Session->write("login.name","$name");
+                        $this->Session->write("login.id","$id");
+                        
+                        }else{
+                            echo "<script>alert('Đăng nhập không thành công');</script>";
+                        }
                 }else{
                     echo "<script>alert('Đăng nhập không thành công');</script>";
                 }
@@ -104,21 +146,29 @@ class SanphamController extends AppController {
 
 
         protected function _register(){
-            if(isset($_POST["register"])){
-                $email=$this->request->data("email");
-                $pass=$this->request->data("pwd");
-                $re_pass=$this->request->data("re_pwd");
-                $fname=$this->request->data("fname");
-                $lname=$this->request->data("lname");
-                $phone=$this->request->data("phone");
-                $add=$this->request->data("add");
-                if(!empty($email) && !empty($pass) && !empty($fname) && !empty($lname) && !empty($phone) && !empty($add)){
-                    if($re_pass==$pass){
-                        $this->User->register($email,$pass,$fname,$lname,$phone,$add);
-                    }else{
-                        echo "<script>alert('Bạn nhập chưa khớp password');</script>";
+            if($this->request->is("post")){
+                
+                    $email=$this->request->data("email");
+                    $pass=$this->request->data("pwd");
+                    $re_pass=$this->request->data("re_pwd");
+                    $fname=$this->request->data("fname");
+                    $lname=$this->request->data("lname");
+                    $phone=$this->request->data("phone");
+                    $add=$this->request->data("add");
+                    if(!empty($email) && !empty($pass) && !empty($fname) && !empty($lname) && !empty($phone) && !empty($add)){
+                        if($re_pass==$pass){
+                            $num=$this->User->register($email,$pass,$fname,$lname,$phone,$add);
+//                            echo $num; exit;
+                            if($num!=0){
+                                echo "<script>alert('bạn đăng kí thành công');</script>";
+                            }else{
+                                echo "<script>alert('Email của bạn đã được sử dụng');</script>";
+                            }
+                        }else{
+                            echo "<script>alert('Bạn nhập chưa khớp password');</script>";
+                        }
                     }
-                }
+                
             }
         }
         protected  function _updateCate(){

@@ -73,7 +73,7 @@
 </head>
 <body>
      <?php 
-//        var_dump($this->Session->read("cart")); exit;
+//     var_dump($this->Session->read("login")); exit;
     ?>
     <nav class="navbar navbar-inverse header hidden-xs">
             <div class=" col-lg-6 col-md-6 hidden-sm hidden-xs">
@@ -182,7 +182,7 @@ echo $this->Html->link($this->Html->tag('span', '', array('class' => 'glyphicon 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="col-lg-3 col-md-3 hidden-sm hidden-xs"></div>
                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                            <a href="index.html"><h1 style="color: greenyellow;" class="bold logo">Thiết Bị Số</h1></a>
+                            <a href="/"><h1 style="color: greenyellow;" class="bold logo">Thiết Bị Số</h1></a>
                             <span class="white hidden-xs">Mang cả thế giới trên đôi bàn tay</span>
                         </div>
                     </div>
@@ -298,10 +298,7 @@ echo $this->Html->link($this->Html->tag('span', '', array('class' => 'glyphicon 
                             
                         </div><hr/>
                         <div class="row content-row-2">
-                            
-                            
-                            
-                            
+
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -65,15 +65,7 @@
                 </div>
                 <hr/>
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <center><div class="fb-page" data-href="https://www.facebook.com/pages/Thi%E1%BA%BFt-b%E1%BB%8B-s%E1%BB%91/852071751497173" data-width="250" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
-                            <div class="fb-xfbml-parse-ignore">
-                                <blockquote cite="https://www.facebook.com/pages/Thi%E1%BA%BFt-b%E1%BB%8B-s%E1%BB%91/852071751497173">
-                                    <a href="https://www.facebook.com/pages/Thi%E1%BA%BFt-b%E1%BB%8B-s%E1%BB%91/852071751497173">Thiết bị số</a>
-                                </blockquote>
-                            </div>
-                        </div></center>
-                </div>
+                
                 <div id="filter" class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
                     <div class="panel list-group">
                         <span class="list-group-item bold" style="background: #000; color:greenyellow;">LỌC THEO</span>
@@ -136,29 +128,20 @@
                 <center><span class="bold" style="font-size: 18px !important; color: green;">DANH SÁCH SẢN PHẨM</span></center>
             </div>
             <div class="row">
-                <?php
-//                echo "<pre>";
-//                    var_dump($dataProduct); exit;
-                foreach ($dataProduct as $valueProduct) {
-//                    echo "<pre>";
-//                    var_dump($valueProduct); exit;
-                    $imgProduct="sanpham/small/".$valueProduct["products"]["Image"];
-                ?>
-                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 border " >
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top:10px !important;">
-                                    <center>
-                                        <!--<img id="" data-zoom-image="/img/sanpham/large/HP450.jpg" src="/img/sanpham/large/HP450.jpg" class="img-responsive pro_img cell" data-toggle="modal" data-target="#proModal" />-->
-<?php echo $this->html->image($imgProduct,array("class"=>"img-responsive cell pro_img","data-toggle"=>"modal","data-target"=>"#proModal"));?>                                        
-                                        <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
-                                    </center>
-                                </div>
-                                <span>Tên: <a><?php echo $valueProduct["products"]["ProductName"];?></a></span><br/>
-                                <span>Giá:<span style="color: red;"><?php echo number_format($valueProduct["products"]["Price"])."đ";?></span></span><br/>
-                                <center><a  class="btn btn-success btn-sm" href="?cart=<?php echo $valueProduct["products"]["id"];?>">Thêm vào giỏ hàng</a></center>
-                            </div>
-                <?php
-                    }
-                ?>                
+                <?php $i=1; foreach ($list_product as $value):?>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 border product" >
+                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top:10px !important;">
+                            <center>  
+                                <?php echo $this->Html->link($this->Html->tag('img', '', array('src' => '/img/sanpham/small/' . $value['Product']['Image'], "class" => "img-responsive pro_img cell img")), array('controller' => 'sanpham', 'action' => 'detail', $value['Product']['id']), array('escape' => false)); ?>
+                            </center>
+                        </div>
+                        <span>Tên: <a><?php echo $value["Product"]["ProductName"]; ?></a></span><br/>
+                        <span>Giá:<span style="color: red;"><?php echo $value["Product"]["Price"]; ?></span></span><br/>
+                        <center>
+                            <a  class="btn btn-success btn-sm" href="?cart=<?php echo $value["Product"]["id"]; ?>">Thêm vào giỏ hàng</a>
+                        </center>
+                    </div>
+                <?php $i++;endforeach;?>                
                 
             </div>
             <div class="row">

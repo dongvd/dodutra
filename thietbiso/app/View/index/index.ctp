@@ -19,19 +19,19 @@
                 <!--Wrapper for slides--> 
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                                <?php echo $this->html->image('01.jpg',array('alt'=>'ss s5')) ?>
+                                <?php echo $this->html->image('01.jpg',array('alt'=>'ss s5'));?>
                     </div>
                     <div class="item">
-                                <?php echo $this->html->image('02.jpg',array('alt'=>'lumia')) ?>
+                                <?php echo $this->html->image('02.jpg',array('alt'=>'lumia'));?>
                     </div>
                     <div class="item">
-                                <?php echo $this->html->image('03.jpg',array('alt'=>'htc')) ?>">
+                                <?php echo $this->html->image('03.jpg',array('alt'=>'htc'));?>
                     </div>
                     <div class="item">
-                                <?php echo $this->html->image('04.jpg',array('alt'=>'iphone')) ?>
+                                <?php echo $this->html->image('04.jpg',array('alt'=>'iphone'));?>
                     </div>
                     <div class="item">
-                                <?php echo $this->html->image('05.jpg',array('alt'=>'lumia 1520')) ?>
+                                <?php echo $this->html->image('05.jpg',array('alt'=>'lumia 1520'));?>
                     </div>
                 </div>
 
@@ -52,54 +52,16 @@
         <!--News-->
         <div class="col-lg-5 col-md-5 col-sm-12 hidden-xs new">
             <hr/>
+            <?php $i=1;foreach($list_news as $value):?>
             <div class="row clr_padding" >
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                    <span><?php echo $this->html->link('Việt nam tung ra siêu phẩm Smart Phone hàng đầu thế giới Bphone.',array('controller'=>'news','action'=>'news'));?></span>
+                    <span><?php echo $this->html->link($value['News']['title'],array('controller'=>'news','action'=>'news',$value['News']['id'],$value['News']['alias']),array('escape'=>false));?></span>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                            <?php echo $this->html->image('sanpham/small/bp.jpg',array('class'=>'img-responsive'));?>
+                            <?php echo $this->html->image($value['News']['image'],array('class'=>'img-responsive'));?>
                 </div>
             </div><hr/>
-            <div class="row clr_padding" >
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                    <span><?php echo $this->html->link('Việt nam tung ra siêu phẩm Smart Phone hàng đầu thế giới Bphone.',array('controller'=>'news','action'=>'news'));?></span>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                            <?php echo $this->html->image('sanpham/small/bp.jpg',array('class'=>'img-responsive'));?>
-                </div>
-            </div><hr/>
-            <div class="row clr_padding" >
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                    <span><?php echo $this->html->link('Việt nam tung ra siêu phẩm Smart Phone hàng đầu thế giới Bphone.',array('controller'=>'news','action'=>'news'));?></span>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                            <?php echo $this->html->image('sanpham/small/bp.jpg',array('class'=>'img-responsive'));?>
-                </div>
-            </div><hr/>
-            <div class="row clr_padding" >
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                    <span><?php echo $this->html->link('Việt nam tung ra siêu phẩm Smart Phone hàng đầu thế giới Bphone.',array('controller'=>'news','action'=>'news'));?></span>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                            <?php echo $this->html->image('sanpham/small/bp.jpg',array('class'=>'img-responsive'));?>
-                </div>
-            </div><hr/>
-            <div class="row clr_padding" >
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                    <span><?php echo $this->html->link('Việt nam tung ra siêu phẩm Smart Phone hàng đầu thế giới Bphone.',array('controller'=>'news','action'=>'news'));?></span>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                            <?php echo $this->html->image('sanpham/small/bp.jpg',array('class'=>'img-responsive'));?>
-                </div>
-            </div><hr/>
-            <div class="row clr_padding" >
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                    <span><?php echo $this->html->link('Việt nam tung ra siêu phẩm Smart Phone hàng đầu thế giới Bphone.',array('controller'=>'news','action'=>'news'));?></span>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                            <?php echo $this->html->image('sanpham/small/bp.jpg',array('class'=>'img-responsive'));?>
-                </div>
-            </div><hr/>
+            <?php $i++;endforeach;?>
         </div>
     </div>
     <hr/>
@@ -189,19 +151,16 @@
                         $idc=$value["Product"]["categories_id"];
                         $idsupp=$value["Product"]["suppliers_id"];
                 ?>
-                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 border " >
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 border product" >
                                 <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top:10px !important;">
                                     <center>
-                                        
-                                        <!--<img id="" data-zoom-image="img/sanpham/large/HP450.jpg" src="img/sanpham/large/HP450.jpg" class="img-responsive pro_img cell" data-toggle="modal" data-target="#proModal" />-->
-         <?php echo $this->html->image($img,array("class"=>"img-responsive pro_img cell img","id" => $id,"data-toggle"=>"modal","data-target"=>"#proModal","onclick"=>"click_modal($id,$idc)"));?>
-                                        <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
+                                        <?php echo $this->Html->link($this->Html->tag('img','',array('src'=>'/img/sanpham/small/'.$value['Product']['Image'],"class"=>"img-responsive pro_img cell img")),array('controller'=>'sanpham','action'=>'detail',$value['Product']['id']),array('escape' => false));?>
                                     </center>
                                 </div>
                                 <span>Tên: <a><?php echo $value["Product"]["ProductName"];?></a></span><br/>
                                 <span>Giá:<span style="color: red;"><?php echo $value["Product"]["Price"];?></span></span><br/>
                                 <center>
-                               <a  class="btn btn-success btn-sm" href="?cart=<?php echo $value["Product"]["id"];?>">Thêm vào giỏ hàng</a>
+                               <a class="btn btn-success btn-sm" href="?cart=<?php echo $value["Product"]["id"];?>">Thêm vào giỏ hàng</a>
                                 </center>
                             </div>
                 <?php
@@ -211,7 +170,9 @@
              </div>   
                 <div class="row">
                     <center>
-                        <button type="button" class="btn btn-default btn-sm" id="loadmore" onclick="clickmore(<?php echo $idc ?>)" data-dismiss="modal" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
+                        <?php $i=0;foreach ($dataLaptop as $value):?>
+                            <a href="/san-pham/<?php echo $value['Product']['categories_id'];?>"><button type="button" class="btn btn-default btn-sm" style="margin-top: 10px !important;">Xem tiếp sản phẩm</button></a>
+                        <?php endforeach;?>
                     </center>
                 </div>
             
@@ -234,14 +195,12 @@
                     $idc=$valuePhone["Product"]["categories_id"];
                     $idsuppP=$valuePhone["Product"]["suppliers_id"];
             ?>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 border" >
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 border product" >
                         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" >
                             <center>
                                 <!--<img id="" src="img/sanpham/small/Bphone1.png" class="" data-toggle="modal" data-target="#proModal" />-->
-        <?php echo $this->html->image($imgPhone,array("class"=>"img-responsive cell pro_img","data-toggle"=>"modal","data-target"=>"#proModal","onclick"=>"click_modal($idp,$idc)"));?>
-                                <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
+                                <?php echo $this->Html->link($this->Html->tag('img','',array('src'=>'/img/sanpham/small/'.$valuePhone['Product']['Image'],"class"=>"img-responsive pro_img cell img")),array('controller'=>'sanpham','action'=>'detail',$valuePhone['Product']['id']),array('escape' => false));?>
                             </center>
-
                         </div>
                         <span>Tên: <a><?php echo $valuePhone["Product"]["ProductName"];?></a></span><br/>
                         <span>Giá:<span style="color: red;"><?php echo number_format($valuePhone["Product"]["Price"])."đ";?></span></span><br/>
@@ -253,7 +212,7 @@
             </div>
             <div class="row">
                 <center>
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="clickmore(<?php echo $idc ?>)" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="clickmore(<?php echo $idc ?>)" style="margin-top: 10px !important;">Xem tiếp sản phẩm</button>
                 </center>
             </div>
             <center><img class="img-responsive" src="img/qc.jpg"/></center>
@@ -282,12 +241,10 @@
                     $idc=$valueTablet["Product"]["categories_id"];
 //                    $idsuppT=$valueTablet["Product"]["suppliers_id"];
             ?>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 border" >
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 border product" >
                             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" >
                                 <center>
-                                    <!--<img id="" src="img/sanpham/small/ipad.jpg" class="img-responsive cell pro_img" data-toggle="modal" data-target="#proModal" />-->
-        <?php echo $this->html->image($imgTablet,array("class"=>"img-responsive cell pro_img","data-toggle"=>"modal","data-target"=>"#proModal","onclick"=>"click_modal($idt,$idc)"));?>
-                                    <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
+                                    <?php echo $this->Html->link($this->Html->tag('img','',array('src'=>'/img/sanpham/small/'.$valueTablet['Product']['Image'],"class"=>"img-responsive pro_img cell img")),array('controller'=>'sanpham','action'=>'detail',$valueTablet['Product']['id']),array('escape' => false));?>
                                 </center>
 
                             </div>
@@ -303,7 +260,7 @@
 
             <div class="row">
                 <center>
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="clickmore(<?php echo $idc ?>)" style="margin-top: 10px !important;">Xem tiếp còn ... sản phẩm nữa</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="clickmore(<?php echo $idc ?>)" style="margin-top: 10px !important;">Xem tiếp sản phẩm</button>
                 </center>
             </div>
 
@@ -327,17 +284,15 @@
                     $idc=$valueFitting["Product"]["categories_id"];
                     $idsuppF=$valueFitting["Product"]["suppliers_id"];
             ?>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 border" >
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 border product" >
                             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" >
                                 <center>
-                                    <!--<img id="" src="img/sanpham/small/Jelly-Ear.jpg" class="img-responsive cell pro_img" data-toggle="modal" data-target="#pkModal" />-->
-                                    <?php echo $this->html->image($imgFitting,array("class"=>"img-responsive cell pro_img img","id"=>"$id","data-toggle"=>"modal","data-target"=>"#pkModal","onclick"=>"click_modal($id,$idc)"));?>
-                                    <span class="glyphicon glyphicon-zoom-in" data-toggle="modal" data-target="#zoomModal" style="position:absolute; right:0px; cursor:pointer;"></span>
+                                    <?php echo $this->Html->link($this->Html->tag('img','',array('src'=>'/img/sanpham/small/'.$valueFitting['Product']['Image'],"class"=>"img-responsive pro_img cell img")),array('controller'=>'sanpham','action'=>'detail',$valueFitting['Product']['id']),array('escape' => false));?>
                                 </center>
                             </div>
                             <span>Tên: <a><?php echo $valueFitting["Product"]["ProductName"];?></a></span><br/>
                             <span class="green">Giá: <span style="color:red;"><?php echo number_format($valueFitting["Product"]["Price"])."đ";?></span></span><br/>
-                            <center><a  class="btn btn-success btn-sm" href="?cart=<?php echo $valueFitting["Product"]["id"];?>">Thêm vào giỏ hàng<a></center>
+                            <center><a  class="btn btn-success btn-sm" href="?cart=<?php echo $valueFitting["Product"]["id"];?>">Thêm vào giỏ hàng</a></center>
                         </div>
                         
             <?php

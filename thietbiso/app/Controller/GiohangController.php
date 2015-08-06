@@ -37,25 +37,30 @@ class GiohangController extends AppController {
                 $email=$this->request->data("lgemail");
                 $pass=$this->request->data("lgpwd");
                 if(!empty($email) && !empty($pass)){
-                $num=$this->User->login($email,$pass);
-                $info=  $this->User->getLogin($email,$pass);
-                if(!empty($info)){
-                    foreach ($info as $valIfo) {
-                        $usr=$valIfo["users"]["FirstName"];
-                        $pwd=$valIfo["users"]["LastName"];
-                    }
-                     $name=$usr.$pwd;
-                        $this->set("info",$info);
-                    if($num>0){
-                        echo "<script>alert('Bạn đăng nhập thành công');</script>";
+                    $num=$this->User->login($email,$pass);
+                    
+                    $info=  $this->User->getLogin($email,$pass);
+                    if(!empty($info)){
+                        foreach ($info as $valIfo) {
+                            $usr=$valIfo["users"]["FirstName"];
+                            $pwd=$valIfo["users"]["LastName"];
+                            $id=$valIfo["users"]["id"];
+                        }
+                         $name=$usr.$pwd;
+                            $this->set("info",$info);
+                        if($num>0){
+                            echo "<script>alert('Bạn đăng nhập thành công');</script>";
 
-                    }
-                    $this->Session->write("login.email","$email");
-                    $this->Session->write("login.pass","$pass");
-                    $this->Session->write("login.name","$name");
-                }else{
-                    echo "<script>alert('Đăng nhập không thành công');</script>";
-                }
+                        }
+                        
+                        $this->Session->write("login.email","$email");
+                        $this->Session->write("login.pass","$pass");
+                        $this->Session->write("login.name","$name");
+                        $this->Session->write("login.id","$id");
+                        
+                        }else{
+                            echo "<script>alert('Đăng nhập không thành công');</script>";
+                        }
                 }else{
                     echo "<script>alert('Đăng nhập không thành công');</script>";
                 }
@@ -75,21 +80,29 @@ class GiohangController extends AppController {
 
 
         protected function _register(){
-            if(isset($_POST["register"])){
-                $email=$this->request->data("email");
-                $pass=$this->request->data("pwd");
-                $re_pass=$this->request->data("re_pwd");
-                $fname=$this->request->data("fname");
-                $lname=$this->request->data("lname");
-                $phone=$this->request->data("phone");
-                $add=$this->request->data("add");
-                if(!empty($email) && !empty($pass) && !empty($fname) && !empty($lname) && !empty($phone) && !empty($add)){
-                    if($re_pass==$pass){
-                        $this->User->register($email,$pass,$fname,$lname,$phone,$add);
-                    }else{
-                        echo "<script>alert('Bạn nhập chưa khớp password');</script>";
+            if($this->request->is("post")){
+                
+                    $email=$this->request->data("email");
+                    $pass=$this->request->data("pwd");
+                    $re_pass=$this->request->data("re_pwd");
+                    $fname=$this->request->data("fname");
+                    $lname=$this->request->data("lname");
+                    $phone=$this->request->data("phone");
+                    $add=$this->request->data("add");
+                    if(!empty($email) && !empty($pass) && !empty($fname) && !empty($lname) && !empty($phone) && !empty($add)){
+                        if($re_pass==$pass){
+                            $num=$this->User->register($email,$pass,$fname,$lname,$phone,$add);
+//                            echo $num; exit;
+                            if($num!=0){
+                                echo "<script>alert('bạn đăng kí thành công');</script>";
+                            }else{
+                                echo "<script>alert('Email của bạn đã được sử dụng');</script>";
+                            }
+                        }else{
+                            echo "<script>alert('Bạn nhập chưa khớp password');</script>";
+                        }
                     }
-                }
+                
             }
         }
         protected  function _updateCate(){
@@ -120,19 +133,28 @@ class GiohangController extends AppController {
                     $total=0;
                     if($this->Session->check("cart")==true){
                         foreach ($this->Session->read("cart") as $value) {
-                            $total+=$value["quantity"];
+                            $total+=$value["quantity"]*$value["price"];
                         }
 //                        echo $id_user."  ".$dateOrder."  ".$status."  ".$total; exit;
                         $this->Order->dathang($id_user,$dateOrder,$status,$total);
                         //echo $this->Form->getLastInsertId();
-                        $id_order=  $this->Order->getInsertId();
-//                        foreach ($this->session->read("cart") as $valuecart) {
-//                            $idpro=$value["id"];
-//                            $quanti=$value["quantity"];
-//                            $moneey=$value["quantity"]*$value["price"];
-//                            $this->Order->insertOrderDetail($id_order,$idpro,$quanti);
-//                        }
-                    var_dump($this->Session->read("login")); exit;
+//                        $id_order=  $this->Order->getInsertId();
+                        $arr_id= $this->Order->query("select LAST_INSERT_ID()");
+                        $id_order=$arr_id[0][0]["LAST_INSERT_ID()"];
+//                        echo $id_order; exit;
+//                        echo "<pre>";
+//                            var_dump($this->Session->read("cart")) ; exit;
+                        $moneey=0;
+                        foreach ($this->Session->read("cart") as $key=> $valuecart) {
+                            $idpro=$valuecart["id"];
+                            $quanti=$valuecart["quantity"];
+                            $moneey=$valuecart["quantity"]*$valuecart["price"];
+//                            echo "<pre>";
+//                            var_dump($valuecart[]) ; exit;
+                            $this->Order->insertOrderDetail($id_order,$idpro,$quanti,$moneey);
+//                        echo $moneey;
+                        }
+                        
                     }
                 }
             }
